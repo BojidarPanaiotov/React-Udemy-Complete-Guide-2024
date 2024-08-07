@@ -1,4 +1,5 @@
 import image from './assets/react-core-concepts.png';
+import { CORE_CONCEPTS } from './data';
 
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 
@@ -18,10 +19,28 @@ function Header() {
     );
 }
 
+function CoreConcept(props) {
+    return (
+        <li>
+            <img src={props.image} title={props.title} />
+            <h3>{props.title}</h3>
+            <p>{props.description}</p>
+        </li>
+    );
+}
+
 function App() {
     return (
         <div>
             <Header />
+            <section id='core-concepts'>
+                <h2>Core Concepts</h2>
+                <ul>
+                    {CORE_CONCEPTS.map((el) => (
+                        <CoreConcept title={el.title} image={el.image} description={el.description}></CoreConcept>
+                    ))}
+                </ul>
+            </section>
             <main>
                 <h2>Time to get started!</h2>
             </main>
